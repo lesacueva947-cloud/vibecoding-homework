@@ -1,0 +1,256 @@
+:root {
+  --bg: #f4f5f7;
+  --card: #ffffff;
+  --text: #1d2330;
+  --muted: #6b7280;
+  --border: #e3e5ea;
+  --accent: #2f9e63;
+  --accent-text: #ffffff;
+  --track: #e8ebef;
+  --danger: #d64545;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14161b;
+    --card: #1e2128;
+    --text: #e8eaee;
+    --muted: #9aa1ad;
+    --border: #2e323b;
+    --accent: #3fbf7a;
+    --accent-text: #0d1a12;
+    --track: #2b2f37;
+    --danger: #f06a6a;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.app {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 32px 16px 48px;
+}
+
+h1 {
+  margin: 0 0 20px;
+  font-size: 28px;
+}
+
+h2 {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+
+input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Дневная цель */
+
+.goal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.goal-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.goal-field input {
+  width: 110px;
+  text-align: right;
+}
+
+.progress {
+  height: 12px;
+  border-radius: 6px;
+  background: var(--track);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  border-radius: 6px;
+  transition: width 0.3s ease;
+}
+
+.progress.over .progress-fill {
+  background: var(--danger);
+}
+
+.goal-status {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.goal-status.over {
+  color: var(--danger);
+}
+
+/* Форма */
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.field-name,
+form button {
+  grid-column: 1 / -1;
+}
+
+form button {
+  padding: 11px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+form button:hover {
+  filter: brightness(1.05);
+}
+
+.error {
+  margin: 8px 0 0;
+  min-height: 1.5em;
+  color: var(--danger);
+  font-size: 14px;
+}
+
+/* Список */
+
+.list-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.link {
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--muted);
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: var(--danger);
+}
+
+.empty {
+  margin: 0;
+  color: var(--muted);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.item-name {
+  overflow-wrap: anywhere;
+}
+
+.item-meta {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.item-kcal {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.delete-btn {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: none;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1;
+}
+
+.delete-btn:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.total {
+  margin: 16px 0 0;
+  text-align: right;
+  font-size: 18px;
+}

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Калькулятор калорий</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <h1>Калькулятор калорий</h1>
+
+    <section class="card">
+      <div class="goal-head">
+        <label for="goal-input">Дневная цель</label>
+        <div class="goal-field">
+          <input id="goal-input" type="number" min="1" step="1" inputmode="numeric">
+          <span>ккал</span>
+        </div>
+      </div>
+      <div class="progress" id="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <p class="goal-status" id="goal-status"></p>
+    </section>
+
+    <section class="card">
+      <h2>Добавить продукт</h2>
+      <form id="product-form" novalidate>
+        <label class="field-name">Продукт
+          <input name="name" type="text" maxlength="60" placeholder="Например, овсянка" autocomplete="off">
+        </label>
+        <label>Ккал на 100 г
+          <input name="kcal" type="number" min="0" step="any" placeholder="350" inputmode="decimal">
+        </label>
+        <label>Вес, г
+          <input name="grams" type="number" min="1" step="any" placeholder="150" inputmode="decimal">
+        </label>
+        <button type="submit">Добавить</button>
+      </form>
+      <p class="error" id="form-error" role="alert"></p>
+    </section>
+
+    <section class="card">
+      <div class="list-head">
+        <h2>Съедено сегодня</h2>
+        <button type="button" class="link" id="clear-btn">Очистить всё</button>
+      </div>
+      <p class="empty" id="empty">Пока ничего не добавлено.</p>
+      <ul class="list" id="list"></ul>
+      <p class="total">Итого: <strong id="total">0</strong> ккал</p>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
